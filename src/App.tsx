@@ -6,6 +6,7 @@ import { RecordForm } from './components/RecordForm';
 import { StatsChart } from './components/StatsChart';
 import { HistoryList } from './components/HistoryList';
 import { UpdateDialog } from './components/UpdateDialog';
+import SyncPanel from "./components/SyncPanel";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -154,6 +155,11 @@ function App() {
 
             <TabPanel value={tabValue} index={1}>
               <HistoryList />
+
+              {/* 云同步面板：只加在历史记录页，其他不动 */}
+              <Box sx={{ mt: 3 }}>
+                <SyncPanel onAfterSync={() => window.location.reload()} />
+              </Box>
             </TabPanel>
           </Paper>
         </Container>
